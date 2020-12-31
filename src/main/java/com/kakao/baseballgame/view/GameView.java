@@ -9,16 +9,16 @@ public class GameView {
     private static final Scanner sc = new Scanner(System.in);
 
     public static int getNumber(){
-        System.out.println("숫자를 입력해주세요: ");
+        System.out.print("숫자를 입력해주세요: ");
         return sc.nextInt();
     }
 
-    public static int getOptin(){
+    public static int getOption(){
         int option = 0;
         while((option != GameOption.RESTART.ordinal()
                 && option != GameOption.EXIT.ordinal())){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            option = getNumber();
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            option = sc.nextInt();
         }
         return option;
     }
