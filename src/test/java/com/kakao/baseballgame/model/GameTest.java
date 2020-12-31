@@ -1,5 +1,7 @@
 package com.kakao.baseballgame.model;
 
+import com.kakao.baseballgame.view.GameView;
+import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -17,6 +19,15 @@ public class GameTest {
         Integer[] answer = game.getAnswer();
         assertTrue(isValidAnswer(answer));
     }
+
+//    @Test
+//    void createHint(){
+//        Game game = new Game();
+//        game.createAnswer();
+//        Pair<Integer, Integer> hint = game.createHint(
+//                new Integer[]{new Integer(1), new Integer(2), new Integer(3)});
+//        GameView.printHint(hint.getKey(), hint.getValue());
+//    }
 
     private boolean isValidAnswer(Integer[] answer){
         return (answer.length == Game.NUM_DIGITS)       // 생성한 정답의 자리수는 약속한 자리수와 동일해야한다

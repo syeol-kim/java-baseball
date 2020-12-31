@@ -1,5 +1,7 @@
 package com.kakao.baseballgame.model;
 
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,4 +32,32 @@ public class Game {
         setAnswer(answer);
     }
 
+    public Pair<Integer, Integer> createHint(Integer[] digits){
+        int numStrikes = 0;
+        int numBalls = 0;
+        for(int i=0; i<NUM_DIGITS; ++i){
+            if(digits[i].equals(answer[i])){
+                ++numStrikes;
+                continue;
+            }
+
+            for(int j=0; j<NUM_DIGITS; ++j){
+                if(digits[i].equals(answer[j])){
+                    ++numBalls;
+                    break;
+                }
+            }
+        }
+        return new Pair<>(numStrikes, numBalls);
+    }
+
+    private Integer[] toArray(int number){
+        Integer[] array = new Integer[NUM_DIGITS];
+        for(int i = 0, j = (int) Math.pow(TEN, NUM_DIGITS-1); number!=0; ++i){
+            array[i] = number/j;
+            number %= j;
+            j /= TEN;
+        }
+        return array;
+    }
 }
